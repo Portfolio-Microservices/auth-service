@@ -41,6 +41,7 @@ public class SecurityConfig {
 						.requestMatchers(HttpMethod.POST, "/api/v1/auth/signup").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/v1/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/api/v1/auth/refresh").permitAll()
+						.requestMatchers("/api/**").permitAll() //for time being
 						.requestMatchers("/api/v1/admin/**").hasRole("ADMIN").anyRequest().authenticated());
 
 		http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
